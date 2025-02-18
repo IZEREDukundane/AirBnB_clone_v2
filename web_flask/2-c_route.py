@@ -2,6 +2,7 @@
 
 """This module contains routes for the AirBnB web project."""
 
+from markupsafe import escape
 from flask import Flask
 
 app = Flask(__name__)
@@ -17,6 +18,12 @@ def home():
 def hbnb():
     """Handles the /hbnb route."""
     return "HBNB"
+
+
+@app.route("/c/<text>", strict_slashes=False)
+def c_route(text):
+    """Returns a note about the C language."""
+    return f"C {escape(text.replace('_', ' '))}"
 
 
 if __name__ == "__main__":
